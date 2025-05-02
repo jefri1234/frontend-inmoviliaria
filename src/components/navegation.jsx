@@ -8,7 +8,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-primary text-primary shadow-md font-bold">
+    <nav className="bg-primary text-primary shadow-md font-bold py-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3">
           <div className="flex-shrink-0 text-xl font-bold">
