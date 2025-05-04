@@ -57,63 +57,60 @@ const Propiedades = () => {
 
       {loading
         ? <p className="text-center text-gray-500">Cargando...</p>
-        : <div className='container mx-auto py-5'>
+        : <div className='container mx-auto py-20'>
           {
             data
-              ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-5">
+              ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-5">
                 {data?.propiedades.map((propiedad: Propiedad) => (
-                  <div
-                    key={propiedad.id}
-                    className="bg-sky-700 text-white rounded-xl shadow hover:shadow-xl transition duration-300 overflow-hidden border border-gray-200"
-                  >
-                    <img
-                      src={propiedad.imgenPrincipla || 'https://via.placeholder.com/400x200'}
-                      alt={propiedad.descripcion}
-                      className="w-full h-72 object-cover"
-                    />
 
-                    <div className="py-5 space-y-3 px-6">
-                      <div className="flex justify-between items-start">
-                        <h2 className="text-2xl font-bold  flex items-center gap-1">
+                  <div key={propiedad.id} >
+                    <div className='w-full flex flex-row-reverse bg-white text-black font-bold'>
+                      <div className='bg-amber-300 max-w-min  px-7 py-4 rounded-tl-full rounded-tr-2xl text-center'>{propiedad.tipoPropiedad}</div>
+                    </div>
+                    <div
+                      key={propiedad.id}
+                      className="bg-sky-700 text-white transition duration-300  shadow-lg overflow-hidden rounded-tl-4xl rounded-bl-4xl"
+                    >
 
-                          {propiedad.departamento}
-                        </h2>
-                        <span
-                          className={`text-xs font-semibold px-2 py-1 rounded-full ${propiedad.estadoPropiedad === 'RESERVADO'
-                              ? 'bg-red-100 text-red-700'
-                              : 'bg-green-100 text-green-700'
-                            }`}
-                        >
-                          {propiedad.estadoPropiedad}
-                        </span>
-                      </div>
+                      <img
+                        src={propiedad.imgenPrincipla || 'https://via.placeholder.com/400x200'}
+                        alt={propiedad.descripcion}
+                        className="w-full h-60 object-cover "
+                      />
 
-                      <p className="text-sm font-bold ">{propiedad.descripcion}</p>
+                      <div className="py-2 space-y-3 px-6">
+                        <div className="flex justify-between items-start">
+                          <h2 className="text-2xl font-bold  flex items-center gap-1">
 
+                            {propiedad.departamento}
+                          </h2>
+
+                        </div>
+
+                        <p className="text-sm font-bold ">{propiedad.descripcion}</p>
 
 
-                      <div className="flex items-center text-sm  gap-1">
-                        <MapPin size={20} />
-                        <span>
-                          {propiedad.direccion}, {propiedad.distrito}
-                        </span>
-                      </div>
 
-                      <div className="flex items-center text-sm  gap-1">
-                        <BedSingle size={20} />
-                        <span>
-                          Pre venta
-                        </span>
-                      </div>
+                        <div className="flex items-center text-sm  gap-1">
+                          <MapPin size={20} />
+                          <span>
+                            {propiedad.direccion}, {propiedad.distrito}
+                          </span>
+                        </div>
 
-                      <div className="flex items-center justify-between pt-9 pb-3">
-                        <p className="text-lg font-bold text-green-600 bg-amber-300 rounded-full px-3 py-2">
-                          Cuota desde ${propiedad.precio.toLocaleString()}
-                        </p>
-                        <span className="flex items-center text-xs text-gray-100">
-                          <CalendarDays size={14} className="mr-1" />
-                          {new Date(propiedad.createdAt).toLocaleDateString()}
-                        </span>
+                        <div className="flex items-center text-sm  gap-1">
+                          <BedSingle size={20} />
+                          <span>
+                            Pre venta
+                          </span>
+                        </div>
+
+                        <div className="flex items-center justify-between pt-3 pb-8">
+                          <p className="text-md font-bold  text-black  bg-yellow-400 rounded-2xl px-4 py-3">
+                            Cuota desde $ <span className='font-bold'>{propiedad.precio.toLocaleString()}</span>
+                          </p>
+
+                        </div>
                       </div>
                     </div>
                   </div>

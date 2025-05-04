@@ -26,10 +26,13 @@ export default function Navbar() {
           </div>
 
           {/* Menú grande */}
-          <div className="hidden md:flex space-x-6">
-            <Link href="/catalogo/casa" className="hover:underline">CASAS</Link>
-            <Link href="/catalogo/terreno" className="hover:underline">TERRENOS</Link>
-            <Link href="/catalogo/departamento" className="hover:underline">DEPARTAMENTOS</Link>
+          <div className="hidden md:flex space-x-1">
+            <Link href="/catalogo/casa" className="hover:underline py-3 px-4 ">Casas</Link>
+            <Link href="/catalogo/terreno" className="hover:underline py-3 px-4 ">Terrenos</Link>
+            <Link href="/catalogo/departamento" className="hover:underline py-3 px-4 ">Departamentos</Link>
+            <Link href="/catalogo/Lotes" className="hover:underline py-3 px-4 ">Lotes</Link>
+            <Link href="/catalogo/refiere" className="hover:underline py-3 px-4 ">Refiere y Gana</Link>
+            <Link  href="/catalogo/departamento" className="bg-amber-400 py-3 px-4 rounded-2xl text-black hover:bg-amber-500  transition-all">Contactanos</Link>
           </div>
         </div>
       </div>
