@@ -16,6 +16,7 @@ export interface Propiedad {
     estadoPropiedad: string;
     direccion: string;
     pais: string;
+    departamento:string
     provincia: string;
     distrito: string;
     imgenPrincipla: string | null; // Puede ser null según tu JSON de ejemplo

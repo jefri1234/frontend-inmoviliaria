@@ -25,10 +25,6 @@ const GET_PROPIEDADES = gql`
       descripcion
       precio
       area
-      habitaciones
-      banos
-      garage
-      longitud
       tipoPropiedad
       estadoPropiedad
       direccion
@@ -56,7 +52,7 @@ const Propiedades = () => {
 
   return (
     <div className="">
-      <Navbar />
+
       <Carousel />
 
       {loading
@@ -64,76 +60,65 @@ const Propiedades = () => {
         : <div className='container mx-auto py-5'>
           {
             data
-              ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-20">
-              {data?.propiedades.map((propiedad: Propiedad) => (
-                <div
-                  key={propiedad.id}
-                  className="bg-sky-700 text-white rounded-lg shadow hover:shadow-xl transition duration-300 overflow-hidden border border-gray-200"
-                >
-                  <img
-                    src={propiedad.imgenPrincipla || 'https://via.placeholder.com/400x200'}
-                    alt={propiedad.descripcion}
-                    className="w-full h-48 object-cover"
-                  />
-        
-                  <div className="py-5 space-y-3 px-6">
-                    <div className="flex justify-between items-start">
-                      <h2 className="text-lg font-bold  flex items-center gap-1">
-                        
-                        {propiedad.tipoPropiedad}
-                      </h2>
-                      <span
-                        className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                          propiedad.estadoPropiedad === 'RESERVADO'
-                            ? 'bg-red-100 text-red-700'
-                            : 'bg-green-100 text-green-700'
-                        }`}
-                      >
-                        {propiedad.estadoPropiedad}
-                      </span>
-                    </div>
-        
-                    <p className="text-sm ">{propiedad.descripcion}</p>
-        
-                    <div className="grid grid-cols-2 gap-2 text-sm ">
-                      <div className="flex items-center gap-1">
-                        <Ruler size={16} />
-                        <span>{propiedad.area} m²</span>
+              ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-5">
+                {data?.propiedades.map((propiedad: Propiedad) => (
+                  <div
+                    key={propiedad.id}
+                    className="bg-sky-700 text-white rounded-xl shadow hover:shadow-xl transition duration-300 overflow-hidden border border-gray-200"
+                  >
+                    <img
+                      src={propiedad.imgenPrincipla || 'https://via.placeholder.com/400x200'}
+                      alt={propiedad.descripcion}
+                      className="w-full h-72 object-cover"
+                    />
+
+                    <div className="py-5 space-y-3 px-6">
+                      <div className="flex justify-between items-start">
+                        <h2 className="text-2xl font-bold  flex items-center gap-1">
+
+                          {propiedad.departamento}
+                        </h2>
+                        <span
+                          className={`text-xs font-semibold px-2 py-1 rounded-full ${propiedad.estadoPropiedad === 'RESERVADO'
+                              ? 'bg-red-100 text-red-700'
+                              : 'bg-green-100 text-green-700'
+                            }`}
+                        >
+                          {propiedad.estadoPropiedad}
+                        </span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <BedSingle size={16} />
-                        <span>{propiedad.habitaciones} hab</span>
+
+                      <p className="text-sm font-bold ">{propiedad.descripcion}</p>
+
+
+
+                      <div className="flex items-center text-sm  gap-1">
+                        <MapPin size={20} />
+                        <span>
+                          {propiedad.direccion}, {propiedad.distrito}
+                        </span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Bath size={16} />
-                        <span>{propiedad.banos} baños</span>
+
+                      <div className="flex items-center text-sm  gap-1">
+                        <BedSingle size={20} />
+                        <span>
+                          Pre venta
+                        </span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Car size={16} />
-                        <span>{propiedad.garage} garage</span>
+
+                      <div className="flex items-center justify-between pt-9 pb-3">
+                        <p className="text-lg font-bold text-green-600 bg-amber-300 rounded-full px-3 py-2">
+                          Cuota desde ${propiedad.precio.toLocaleString()}
+                        </p>
+                        <span className="flex items-center text-xs text-gray-100">
+                          <CalendarDays size={14} className="mr-1" />
+                          {new Date(propiedad.createdAt).toLocaleDateString()}
+                        </span>
                       </div>
-                    </div>
-        
-                    <div className="flex items-center text-sm  gap-1">
-                      <MapPin size={16} />
-                      <span>
-                        {propiedad.direccion}, {propiedad.distrito}, {propiedad.provincia}, {propiedad.pais}
-                      </span>
-                    </div>
-        
-                    <div className="flex items-center justify-between mt-2">
-                      <p className="text-lg font-bold text-green-600 bg-amber-300 rounded-full px-3 py-2">
-                        Cuota desde ${propiedad.precio.toLocaleString()}
-                      </p>
-                      <span className="flex items-center text-xs text-gray-400">
-                        <CalendarDays size={14} className="mr-1" />
-                        {new Date(propiedad.createdAt).toLocaleDateString()}
-                      </span>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
               : <p className="text-center text-red-500">{error?.message}</p>
           }
         </div>}

@@ -27,9 +27,9 @@ export default function Navbar() {
 
           {/* Menú grande */}
           <div className="hidden md:flex space-x-6">
-            <Link href="/" className="hover:underline">Inicio</Link>
-            <Link href="/about" className="hover:underline">Acerca</Link>
-            <Link href="/contact" className="hover:underline">Contacto</Link>
+            <Link href="/catalogo/casa" className="hover:underline">CASAS</Link>
+            <Link href="/catalogo/terreno" className="hover:underline">TERRENOS</Link>
+            <Link href="/catalogo/departamento" className="hover:underline">DEPARTAMENTOS</Link>
           </div>
         </div>
       </div>

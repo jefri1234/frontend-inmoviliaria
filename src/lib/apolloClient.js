@@ -5,7 +5,7 @@ const client = new ApolloClient({
     uri: 'http://localhost:3000/graphql', // Endpoint del backend
     credentials: 'include', // Incluir credenciales si es necesario
   }),
-  cache: new InMemoryCache(),
+   cache: new InMemoryCache(), // Habilita el cache automático
 });
 
 export default client;
